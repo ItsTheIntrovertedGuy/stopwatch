@@ -235,7 +235,7 @@ main(i32 ArgumentCount, char **Arguments)
 	struct timeval TimeStampTimerStart = { 0 };
 	(void)gettimeofday(&TimeStampTimerStart, 0);
 
-	timer_state TimerState = TIMER_STATE_RUNNING;
+	timer_state TimerState = TIMER_STATE_PAUSED;
 	b32 RunProgram = 1;
 	while (RunProgram)
 	{
