@@ -128,7 +128,7 @@ DrawCharacter(font_set Font, char CharacterToDraw,
 {
 	font_index FontIndex = 0;
 	{
-		if (CharIsNumber(CharacterToDraw))
+		if (CharIsDigit(CharacterToDraw))
 		{
 			FontIndex = CharacterToDraw - '0';
 		}
@@ -141,7 +141,7 @@ DrawCharacter(font_set Font, char CharacterToDraw,
 	
 	for (i32 YOffset = 0; YOffset < Font.CharHeight; ++YOffset)
 	{
-		CursorMove(DrawPositionY + YOffset, DrawPositionX);
+		CursorMoveTo(DrawPositionY + YOffset, DrawPositionX);
 		printf("%.*s", Font.CharWidth, Font.CharData[FontIndex] + YOffset*Font.CharWidth);
 	}
 }
@@ -167,7 +167,7 @@ ConsoleCleanup(void)
 	ConsoleSetForegroundColor(FOREGROUND_COLOR_DEFAULT);
 	ScreenClear();
 	CursorShow();
-	CursorMove(0, 0);
+	CursorMoveTo(0, 0);
 	EchoEnable();
 }
 
@@ -276,7 +276,7 @@ main(i32 ArgumentCount, char **Arguments)
 				// Clear lines
 				for (i32 IndexY = 0; IndexY < FontSet.CharHeight; ++IndexY)
 				{
-					CursorMove(0, StartY + IndexY);
+					CursorMoveTo(0, StartY + IndexY);
 					ClearCurrentLine();
 				}
 				
